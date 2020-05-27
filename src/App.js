@@ -82,7 +82,7 @@ function App() {
     } else {
       addToast(value, {
         appearance: 'success',
-        autoDismiss,
+        autoDismiss: false,
         autoDismissTimeout
      })
     }
@@ -103,9 +103,9 @@ function App() {
         <button onClick={() => getCount()} type="button">Get Messages Count</button>
         <a
           className="App-link"
-          onClick={() => onSubmit("Azure Ethereum Blockchain")}
+          onClick={() => onSubmit("Azure Blockchain Service is Awesome!")}
         >
-          Azure Ethereum Blockchain
+          Azure Blockchain Service
         </a>
       </header>
     </div>
