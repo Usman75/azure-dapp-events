@@ -42,33 +42,25 @@ function App() {
   const subscribe2Events =  () => {
     var subscription = web3.eth.subscribe('logs', {
       address: '0x89da55DFda82E2874E5d7054D772FFFCF488C38B',
-      // topics: ['0x8fbf346523616c015d34c71713ea41bb98008282341b0f191f578d20d7ed26e2']
     }, function (error, result) {
-      // if (!error)
         console.log("subscription",error, result);
-        // onSubmit(result)
     });
     console.log("myContract", myContract);
     onSubmit("Connected to Contract 0x89da55DFda82E2874E5d7054D772FFFCF488C38B")
     myContract.events.allEvents({ fromBlock: 'latest' }, function (error, event) { console.log("events logs",error,event); })
       .on("connected", (subscriptionId) => {
         console.log("connected subscriptionId:",subscriptionId);
-        
       })
       .on('data', async (event) => {
-        console.log("data",event); // same results as the optional callback above
-        onSubmit("Event " + event.event + " Received, Data: " + JSON.stringify(event.returnValues), false, false )
+        console.log("data", event);// we log it for debugging purposes only
+        onSubmit("Event " + event.event + " Received, Data: " + JSON.stringify(event.returnValues), false, true, 15000)//show a toast message with the event data from contract
       })
       .on('changed', (event) => {
-        // remove event from local database
         console.log("changed", event)
-        // onSubmit("Connected to Contract " + subscriptionId)
       })
-      .on('error', (error, receipt) => { // If the transaction was rejected by the network with a receipt, the second parameter will be the receipt.
+      .on('error', (error, receipt) => {
         console.log(error, receipt)
-        // onSubmit("Connected to Contract " + subscriptionId)
       });
-
   }
 
   const getLastMessage = async () => {
@@ -81,7 +73,7 @@ function App() {
     onSubmit("Messages Count = "+result)
   }
 
-  const onSubmit = async (value, error, autoDismiss = true) => {
+  const onSubmit = async (value, error, autoDismiss = true, autoDismissTimeout = 5000) => {
     if (error) {
       addToast(error, {
         appearance: 'error',
@@ -90,7 +82,8 @@ function App() {
     } else {
       addToast(value, {
         appearance: 'success',
-        autoDismiss
+        autoDismiss,
+        autoDismissTimeout
      })
     }
   }
