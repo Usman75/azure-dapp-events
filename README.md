@@ -16,3 +16,8 @@ https://azure-dapp-events.x5engine.com
 Video Presentation
 
 https://youtu.be/RTYQnuNz79E
+
+
+Tweet: 
+
+https://twitter.com/ucefkh/status/1265800311723249664
