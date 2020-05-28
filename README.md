@@ -12,3 +12,7 @@ Thanks to the Azure Gitcoin Bounty https://gitcoin.co/issue/Azure-Samples/bc-com
 # DEMO
 
 https://azure-dapp-events.x5engine.com
+
+Video Presentation
+
+https://youtu.be/RTYQnuNz79E
